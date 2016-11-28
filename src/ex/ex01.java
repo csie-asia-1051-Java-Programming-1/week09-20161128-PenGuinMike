@@ -8,11 +8,33 @@
  * Author: 1050210XX 周永振老師
  */
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class ex01 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+				Scanner scn = new Scanner(System.in);
+				Random rnd = new Random();
+				int arr[]=new int[6];
+				rnd.setSeed(scn.nextInt());
+				/*for(int i=0;i<6;i++){
+					arr[i]=(int)(Math.random()*42+1);
+				}*/
+				for(int i=0;i<6;i++){
+					arr[i]=(int)(rnd.nextInt(42)+1);
+					for(int j=0;j<i;j++){
+						if(arr[i]==arr[j]){
+							i--;
+						}
+					}
+				}
+				
+				
+				for(int b=0;b<6;b++){
+					System.out.print(arr[b]+" ");
+				}
+			}
 
-	}
-
-}
+		}
