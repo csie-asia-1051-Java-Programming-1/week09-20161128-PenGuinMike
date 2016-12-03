@@ -15,20 +15,41 @@ public class ex02 {
 		// TODO Auto-generated method stub
 		Scanner scn =new Scanner(System.in);
 		ArrayList<Student>student=new ArrayList<Student>();
-		student.add(new Student("Mike","1024"));
-		student.add(new Student("jack","1025"));
-		student.add(new Student("tracy","1026"));
-		student.add(new Student("joyce","1027"));
+		boolean flag = true;
+		char a;
+		//System.out.println("請輸入姓名與學號(mike 1024): ");
+		while(flag){
+			System.out.println("請輸入姓名與學號(mike enter鍵   1024): ");
+			student.add(new Student(scn.nextLine(),scn.nextLine()));
+			System.out.println("請輸入成績: ");
+			student.get(0).addGrade(scn.nextFloat(), scn.nextFloat(), scn.nextFloat());
+			System.out.println("請問還有資料要輸入嗎?(Y/N): ");
+			a=scn.next().charAt(0);
+			if(a=='n'||a=='N'){
+				System.out.println("資料已輸入完畢,運算中.....");
+				flag=false;
+			}else{
+				flag=true;
+			}
+		}
+		for(int i=0;i<student.size();i++){
+			student.get(i).showInfo();
+		}
+		
+		//student.add(new Student("Mike","1024"));
+		//student.add(new Student("jack","1025"));
+		//student.add(new Student("tracy","1026"));
+		//student.add(new Student("joyce","1027"));
 		//student.get(0).showInfo();
 		//student.get(0).addCourse("program1", "8787");
-		student.get(0).addGrade(55, 88, 99);
-		student.get(1).addGrade(44, 55, 66);
-		student.get(2).addGrade(70, 88, 80);
-		student.get(3).addGrade(80, 85, 90);
-		student.get(0).showInfo();
-		student.get(1).showInfo();
-		student.get(2).showInfo();
-		student.get(3).showInfo();
+		//student.get(0).addGrade(55, 88, 99);
+		//student.get(1).addGrade(44, 55, 66);
+		//student.get(2).addGrade(70, 88, 80);
+		//student.get(3).addGrade(80, 85, 90);
+		//student.get(0).showInfo();
+		//student.get(1).showInfo();
+		//student.get(2).showInfo();
+		//student.get(3).showInfo();
 		//Collections.sort((List<T>) student);//List<T> list, Comparator<? super T> c
 	}
 }
