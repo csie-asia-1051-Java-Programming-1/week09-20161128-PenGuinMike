@@ -16,47 +16,35 @@ public class ex02 {
 		Scanner scn =new Scanner(System.in);
 		ArrayList<Student>student=new ArrayList<Student>();
 		boolean flag = true;
-		char a;
-		//System.out.println("請輸入姓名與學號(mike 1024): ");
+		char a=0;int b=0;
 		while(flag){
-			System.out.println("請輸入姓名與學號(mike enter鍵   1024): ");
-			student.add(new Student(scn.nextLine(),scn.nextLine()));
+			
+			System.out.println("請輸入姓名與學號(mike 1024): ");
+			student.add(new Student(scn.next(), scn.next()));
 			System.out.println("請輸入成績: ");
-			student.get(0).addGrade(scn.nextFloat(), scn.nextFloat(), scn.nextFloat());
+			student.get(b).addGrade(scn.nextInt(), scn.nextInt(), scn.nextInt());
+			b++;
 			System.out.println("請問還有資料要輸入嗎?(Y/N): ");
 			a=scn.next().charAt(0);
 			if(a=='n'||a=='N'){
 				System.out.println("資料已輸入完畢,運算中.....");
 				flag=false;
-			}else{
-				flag=true;
 			}
+			else{	
+				flag=true;
+							}
 		}
-		for(int i=0;i<student.size();i++){
+		for(int i=0;i<student.size();i++){	   
 			student.get(i).showInfo();
+			System.out.println();
 		}
-		
-		//student.add(new Student("Mike","1024"));
-		//student.add(new Student("jack","1025"));
-		//student.add(new Student("tracy","1026"));
-		//student.add(new Student("joyce","1027"));
-		//student.get(0).showInfo();
-		//student.get(0).addCourse("program1", "8787");
-		//student.get(0).addGrade(55, 88, 99);
-		//student.get(1).addGrade(44, 55, 66);
-		//student.get(2).addGrade(70, 88, 80);
-		//student.get(3).addGrade(80, 85, 90);
-		//student.get(0).showInfo();
-		//student.get(1).showInfo();
-		//student.get(2).showInfo();
-		//student.get(3).showInfo();
-		//Collections.sort((List<T>) student);//List<T> list, Comparator<? super T> c
 	}
 }
 
 
 class Student{
-		private String id,name;
+		private String name,id;
+		//private int id;
 		private ArrayList<Course>couList = new ArrayList<Course>();
 		private ArrayList<Grade>grdList = new ArrayList<Grade>();
 		public Student (String name1,String id1){
@@ -65,20 +53,24 @@ class Student{
 		public void addCourse(String name1,String id1){
 			couList.add(new Course(name1,id1));
 		}
-		public void addGrade(float grade1,float grade2,float grade3){
+		public String getName(){
+			return name;
+		}
+		public String getId(){
+			return id;
+		}
+		public void addGrade(int grade1,int grade2,int grade3){
 			grdList.add(new Grade  (grade1, grade2, grade3));
 		}
 		public void showInfo() {
-			System.out.print("name: "+name+"\t");
-			System.out.print("id: "+id+"\t");
-			//System.out.println("#of course:"+couList.size());
+			System.out.print("name: "+getName());
+			System.out.print("  id: "+getId());
 			for(int i=0;i<grdList.size();i++){
-				System.out.println("grade-chinese: "+grdList.get(i).getChi()+"/ english: "
-			+grdList.get(i).getEng()+"/ math: "+grdList.get(i).getMath()+"/ Avg= "+grdList.get(i).getAvg());
-			}System.out.println();
-			/*for(int i=0;i<couList.size();i++){
-				System.out.println("course name: "+couList.get(i).getName());
-			}*/
+			System.out.print(" / grade-chinese: "+grdList.get(i).getChi()+
+							  "/ english: "+grdList.get(i).getEng()+
+							  "/ math: "+grdList.get(i).getMath()+
+							  "/ Avg= "+grdList.get(i).getAvg()+"\n");
+			}
 		}
 	}
 class Course{
@@ -94,23 +86,21 @@ class Course{
 	
 }
 class Grade{
-	private float chinese,english,math;
-	public Grade(float grade1,float grade2,float grade3){
+	private int chinese,english,math;
+	public Grade(int grade1,int grade2,int grade3){
 		chinese=grade1;english=grade2;math=grade3;
 	}
 	public float getAvg(){
 		return (chinese+english+math)/3;
 	}
-	public float getChi(){
+	public int getChi(){
 		return chinese;
 	}
-	public float getEng(){
+	public int getEng(){
 		return english;
 	}
-	public float getMath(){
+	public int getMath(){
 		return math;
 	}
 
-	
-	
 }
